@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
             name: 'goflash-web',
-            cwd: './web',
+            cwd: './',
             script: './node_modules/next/dist/bin/next',
             args: 'start -p 8101',
             watch: true,
