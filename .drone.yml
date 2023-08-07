@@ -2,7 +2,7 @@ kind: pipeline
 type: docker
 name: default
 steps:
-  - name: deploy-demo
+  - name: deploy
     image: appleboy/drone-ssh
     settings:
       host: 45.125.34.94
@@ -10,11 +10,29 @@ steps:
       key:
         from_secret: ssh_key
       port: 22
-      command_timeout: 2m
       script:
-        - "mkdir -p /home/pincman/htdocs/goflash && cd &_"
-        - "[ -d ./web ] && rm -rf ./web"
-        - GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone -q git@git.3rcd.com:goflash/web.git ./web
-        - cd web
-        - echo "NEXT_PUBLIC_API_HOST=https://goflash.3rcd.com/api" > .env
-        - "source ~/.zshrc;pnpm i && pnpm build && pm2 restart ecosystem.config.js && pm2 save"
+        - cd /home/pincman/htdocs
+        - "[ -d ./site ] && rm -rf ./site"
+        # 这一行很重要，因为没有的话，第一次克隆就会失败
+        - GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone -q git@git.3rcd.com:classroom/site.git ./site
+        - "source ~/.zshrc; cd site && pnpm i && pnpm build"
+# kind: pipeline
+# type: docker
+# name: default
+# steps:
+#   - name: deploy-demo
+#     image: appleboy/drone-ssh
+#     settings:
+#       host: 45.125.34.94
+#       username: pincman
+#       key:
+#         from_secret: ssh_key
+#       port: 22
+#       command_timeout: 2m
+#       script:
+#         - "mkdir -p /home/pincman/htdocs/goflash && cd &_"
+#         - "[ -d ./web ] && rm -rf ./web"
+#         - GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone -q git@git.3rcd.com:goflash/web.git ./web
+#         - cd web
+#         - echo "NEXT_PUBLIC_API_HOST=https://goflash.3rcd.com/api" > .env
+#         - "source ~/.zshrc;pnpm i && pnpm build && pm2 restart ecosystem.config.js && pm2 save"
