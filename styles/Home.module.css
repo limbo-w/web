@@ -1,0 +1,4 @@
+.categorys{
+  display: flex;
+  overflow: auto;
+}

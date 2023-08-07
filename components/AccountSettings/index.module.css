@@ -1,0 +1,43 @@
+.edit {
+    display: flex;
+    align-items: center;
+    color: #969899;
+    font-size: 16px;
+}
+
+.edit span {
+    margin-right: 5px;
+}
+.personal .userInfo{
+    margin-bottom: 15px;
+}
+.personal .userInfo.first{
+    display: flex;
+    justify-content: space-between;
+}
+.personal .userInfo.first .firstRight{
+    display: flex;
+}
+.personal .userInfo .label{
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: #969899;
+}
+.personal .userInfo .value{
+    font-size: 16px;
+}
+
+.hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.personal .btns {
+    display: flex;
+    justify-content: space-evenly;
+}

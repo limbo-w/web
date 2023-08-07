@@ -1,0 +1,18 @@
+.balance .balanceItem{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.balance .balanceItem .right{
+    display: flex;
+    align-items: center;
+}
+.balance .balanceItem .left{
+    font-size: 12px;
+    color: #606466;
+}
+.balance .balanceItem .right .count{
+   font-weight: 700;
+   margin-left: 4px;
+} 

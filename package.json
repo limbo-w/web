@@ -1,0 +1,46 @@
+{
+  "name": "nextjs-taoke",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 5555",
+    "build": "next build",
+    "start": "next start -p 8888",
+    "lint": "next lint",
+    "deploy": "pm2 deploy production"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.8.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/material": "^5.10.6",
+    "@mui/system": "^5.13.2",
+    "axios": "^1.0.0",
+    "classnames": "^2.3.2",
+    "copy-to-clipboard": "^3.3.2",
+    "daisyui": "^2.31.0",
+    "lodash": "^4.17.21",
+    "mobx": "^6.6.2",
+    "mobx-react": "^7.5.3",
+    "next": "12.3.1",
+    "pm2": "^5.2.2",
+    "prop-types": "^15.8.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "swiper": "^8.4.4",
+    "swr": "^2.0.0",
+    "tailwind-scrollbar-hide": "^1.1.7"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^6.4.0",
+    "@types/node": "18.7.18",
+    "@types/prop-types": "^15.7.5",
+    "autoprefixer": "^10.4.12",
+    "eslint": "8.23.1",
+    "eslint-config-next": "12.3.1",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.8",
+    "typescript": "4.8.3"
+  }
+}
