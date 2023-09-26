@@ -20,7 +20,7 @@ import stores from "../stores";
 
 function SignUp() {
   const [email, setEmail] = React.useState("");
-  const [way,setWay] = React.useState("email");
+  const [way,setWay] = React.useState("password");
   const router = useRouter();
   const { commonStore } = stores;
   const sendCode = async (event) => {
@@ -90,83 +90,7 @@ function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          {way === "email" ? (
-            <Box
-              component="form"
-              noValidate
-              onSubmit={handleSubmit}
-              sx={{ mt: 3 }}
-            >
-              <Grid container spacing={2}>
-                <Grid item xs={12} className="flex space-x-2 items-center">
-                  <TextField
-                    required
-                    fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    value={email}
-                    onChange={(e) => {
-                      setEmail(e.target.value);
-                    }}
-                    autoComplete="email"
-                  />
-                  <Button
-                    fullWidth
-                    variant="contained"
-                    className=" btn w-36 btn-primary bg-blue-500  border-4 border-blue-500"
-                    onClick={sendCode}
-                  >
-                    Get Code
-                  </Button>
-                </Grid>
-                {/* <Grid item xs={12}>
-              
-              </Grid> */}
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="code"
-                    label="code"
-                    type="text"
-                    id="code"
-                    autoComplete="new-code"
-                  />
-                </Grid>
-              </Grid>
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                sx={{ mt: 3, mb: 2 }}
-                className="bg-blue-500"
-              >
-                Sign Up
-              </Button>
-              <Grid container className="flex justify-between">
-                <Grid item>
-                  <Typography
-                    onClick={() => {
-                      setWay("password");
-                    }}
-                  >
-                    <Link className="cursor-pointer" variant="body2">
-                      Password to register
-                    </Link>
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography onClick={() => router.push("/sign_in")}>
-                    <Link className="cursor-pointer" variant="body2">
-                      Already have an account? Sign in
-                    </Link>
-                  </Typography>
-                </Grid>
-              </Grid>
-            </Box>
-          ) : (
-            <Box
+          <Box
               component="form"
               noValidate
               onSubmit={handleSubmit}
@@ -239,30 +163,7 @@ function SignUp() {
               >
                 Sign Up
               </Button>
-              <Grid container className="flex justify-between">
-                <Grid item>
-                  {way === "email" ? (
-                    <Typography
-                      onClick={() => {
-                        setWay("password");
-                      }}
-                    >
-                      <Link className="cursor-pointer" variant="body2">
-                        Password to register
-                      </Link>
-                    </Typography>
-                  ) : (
-                    <Typography
-                      onClick={() => {
-                        setWay("email");
-                      }}
-                    >
-                      <Link className="cursor-pointer" variant="body2">
-                        Email to register
-                      </Link>
-                    </Typography>
-                  )}
-                </Grid>
+              <Grid container className="flex justify-end">
                 <Grid item>
                   <Typography onClick={() => router.push("/sign_in")}>
                     <Link className="cursor-pointer" variant="body2">
@@ -272,7 +173,6 @@ function SignUp() {
                 </Grid>
               </Grid>
             </Box>
-          )}
         </Box>
         <Divider
           sx={{
