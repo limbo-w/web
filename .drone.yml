@@ -32,5 +32,5 @@ steps:
         - "[ -d ./web ] && rm -rf ./web"
         - GIT_SSH_COMMAND="ssh -o StrictHostKeyChecking=no" git clone -q git@git.3rcd.com:goflash/web.git ./web
         - cd web
-        - echo "NEXT_PUBLIC_API_HOST=https://goflash.3rcd.com/api" > .env
+        - echo "NEXT_PUBLIC_API_HOST=https://goflashdeals.com/api" > .env
         - "source ~/.zshrc; pnpm i && pnpm build && pm2 restart ecosystem.config.js && pm2 save"
