@@ -126,7 +126,7 @@ function DealsItem(props) {
               <div className="text-xs  font-medium md:text-base css2Overflow-ellipsis">
                 {post?.title}
               </div>
-              <div className="text-sm font-medium">Ends at {date.toDateString().split(" ")[1]} {date.getDate()}</div>
+              <div className="text-sm font-medium">{post.isExpired ? 'Expired' : `Ends at ${date.toDateString().split(" ")[1]} ${date.getDate()}`}</div>
               <div className="flex justify-between">
                 <div className="flex space-x-2">
                   <div className="font-bold text-red-400">{post.price !== '0' && post.price !== 0 ?`$${post.price}`:null}</div>
