@@ -66,6 +66,7 @@ function DealsItem(props) {
               categoryID:post.categories?.[0].id,
               link:post.link,
               brandIMG:post.brand?.logo?.id + post.brand?.logo?.ext,
+              isExpired:post.isExpired,
             }
           });
         }}
