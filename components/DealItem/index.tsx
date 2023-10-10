@@ -65,7 +65,7 @@ function DealsItem(props) {
               categoryName:post.categories?.[0].name,
               categoryID:post.categories?.[0].id,
               link:post.link,
-              brandIMG:post.brand?.logo.id + post.brand?.logo.ext,
+              brandIMG:post.brand?.logo?.id + post.brand?.logo?.ext,
             }
           });
         }}
@@ -97,7 +97,7 @@ function DealsItem(props) {
                     {post.brand ? (
                       <Images
                         priority
-                        src={`${process.env.NEXT_PUBLIC_API_HOST}/medias/images/${post.brand?.logo.id}${post.brand?.logo.ext}`}
+                        src={`${process.env.NEXT_PUBLIC_API_HOST}/medias/images/${post.brand?.logo?.id}${post.brand?.logo?.ext}`}
                         width={50}
                         height={50}
                         className="rounded-lg object-contain bg-white"
