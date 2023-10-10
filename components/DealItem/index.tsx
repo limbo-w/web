@@ -17,7 +17,7 @@ import styles from "./index.module.css";
 import useSWR from "swr";
 import { cancelFavoriteDeal, favoriteDeal } from "../../server/api/deals";
 function DealsItem(props) {
-  console.log(props.post.id, props.post.isLiked, "props");
+  console.log(props.post, props.post.isLiked, "props");
   const router = useRouter();
   const { post } = props;
   const handleLikeClick = (e) => {
@@ -56,7 +56,7 @@ function DealsItem(props) {
           router.push({
             pathname:"/deals/1",
             query:{
-              image:post.image.id + post.image.ext,
+              image:post.image?.id + post.image.ext,
               title:post.title,
               price:post.price,
               oldPrice:post.oldPrice,
@@ -65,7 +65,7 @@ function DealsItem(props) {
               categoryName:post.categories?.[0].name,
               categoryID:post.categories?.[0].id,
               link:post.link,
-              brandIMG:post.brand.logo.id + post.brand.logo.ext,
+              brandIMG:post.brand?.logo.id + post.brand?.logo.ext,
             }
           });
         }}
@@ -84,7 +84,7 @@ function DealsItem(props) {
                 {post.image ? (
                   <Images
                     priority
-                    src={`${process.env.NEXT_PUBLIC_API_HOST}/medias/images/${post.image.id}${post.image.ext}`}
+                    src={`${process.env.NEXT_PUBLIC_API_HOST}/medias/images/${post.image?.id}${post.image?.ext}`}
                     width={240}
                     height={150}
                     objectFit="contain"

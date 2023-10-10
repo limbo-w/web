@@ -439,7 +439,7 @@ export default function Deals({ post, deals, Related, categories }) {
                   Continue reading...
                 </Typography> */}
                 <span className="text-[16px] font-medium ml-8">
-                  Ends at {date.toDateString().split(" ")[1]} {date.getDate()}
+                  {post.isExpired ? 'Expired' : `Ends at ${date.toDateString().split(" ")[1]} ${date.getDate()}`}
                 </span>
                 {/* <div className="border-dotted border-t-2 border-gray-500 ..."></div> */}
                 <div className="w-full p-4 pl-0 overflow-hidden rounded-lg ">
