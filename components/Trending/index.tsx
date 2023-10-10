@@ -190,11 +190,11 @@ export default function Trending(props: ITrendingProps) {
                   mr: "20px",
                   paddingLeft: "8px",
                   paddingRight: "8px",
-                  color: category === currentCategory.id ? ACTIVE_COLOR : "",
+                  color: category === currentCategory?.id ? ACTIVE_COLOR : "",
                 }}
                 key={index}
                 onClick={() => {
-                  router.query.category = currentCategory.id;
+                  router.query.category = currentCategory?.id;
                   router.push(router);
                 }}
               >
