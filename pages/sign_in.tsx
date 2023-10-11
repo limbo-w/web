@@ -215,22 +215,22 @@ function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Divider
-          sx={{
-            mb: 4,
-          }}
-        >
-          OR
-        </Divider>
-        <Button
-          href={`${process.env.NEXT_PUBLIC_API_HOST}/auth/google`}
-          fullWidth
-          size="large"
-          variant="outlined"
-          startIcon={<GoogleSvg width={20} height={20} />}
-        >
-          Sign in with Google
-        </Button>
+        // <Divider
+        //   sx={{
+        //     mb: 4,
+        //   }}
+        // >
+        //   OR
+        // </Divider>
+        // <Button
+        //   href={`${process.env.NEXT_PUBLIC_API_HOST}/auth/google`}
+        //   fullWidth
+        //   size="large"
+        //   variant="outlined"
+        //   startIcon={<GoogleSvg width={20} height={20} />}
+        // >
+        //   Sign in with Google
+        // </Button>
       </Container>
     </Layout>
   );
