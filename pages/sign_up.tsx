@@ -102,13 +102,13 @@ function SignUp() {
                     required
                     fullWidth
                     id="username"
-                    label="username"
+                    label="Username"
                     name="username"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
-                    autoComplete="username"
+                    autoComplete="Username"
                   />
                 </Grid>
                 {/* <Grid item xs={12}>
@@ -119,10 +119,10 @@ function SignUp() {
                     required
                     fullWidth
                     name="nickname"
-                    label="nickname"
+                    label="Nickname"
                     type="text"
                     id="nickname"
-                    autoComplete="nickname"
+                    autoComplete="Nickname"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -130,10 +130,10 @@ function SignUp() {
                     required
                     fullWidth
                     name="password"
-                    label="password"
+                    label="Password"
                     type="password"
                     id="password"
-                    autoComplete="password"
+                    autoComplete="Password"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -141,10 +141,10 @@ function SignUp() {
                     required
                     fullWidth
                     name="plainPassword"
-                    label="plainPassword"
+                    label="Confirm Password                    "
                     type="password"
                     id="plainPassword"
-                    autoComplete="plainPassword"
+                    autoComplete="Confirm Password                    "
                   />
                 </Grid>
                 {/* <Grid item xs={12}>
@@ -174,7 +174,7 @@ function SignUp() {
               </Grid>
             </Box>
         </Box>
-        <Divider
+        {/* <Divider
           sx={{
             mb: 4,
           }}
@@ -189,7 +189,7 @@ function SignUp() {
           startIcon={<GoogleSvg width={20} height={20} />}
         >
           Sign in with Google
-        </Button>
+        </Button> */}
       </Container>
     </Layout>
   );
