@@ -51,24 +51,29 @@ function SignUp() {
           message.success({ content: "sign in success!" });
         }
       }else{
-        result = await signUpByPassword({
-          username: data.get("username"),
-          password: data.get("password"),
-          plainPassword: data.get("plainPassword"),
-          nickname:data.get("nickname")
-        });
-        if(result?.actived){
-          message.success({ content: "sign in success!" });
+        try {
+          result = await signUpByPassword({
+            username: data.get("username"),
+            password: data.get("password"),
+            plainPassword: data.get("plainPassword"),
+            nickname:data.get("nickname")
+          });
+          if(result?.actived){
+            message.success({ content: "sign in success!" });
+          }
+        } catch (error) {
+          console.log(error)
+          message.error({content: error.response?.data?.message[0]})
         }
       }
-      if (result?.actived) {
-        // localStorage.setItem("token", result.data.token);
-        // commonStore.setUserProfile(result.data.user);
-        router.push("/sign_in");
-        message.success({ content: "sign in success!" });
-      } else {
-        message.error({ content: result.message });
-      }
+      // if (result?.actived) {
+      //   // localStorage.setItem("token", result.data.token);
+      //   // commonStore.setUserProfile(result.data.user);
+      //   router.push("/sign_in");
+      //   message.success({ content: "sign in success!" });
+      // } else {
+      //   message.error({ content: result.message });
+      // }
   };
 
   return (
