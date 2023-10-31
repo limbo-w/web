@@ -118,12 +118,12 @@ function SignIn() {
               }}
               id="email"
               type="email"
-              label="Email Address"
+              label="username"
               name="email"
               autoComplete="email"
               autoFocus
             />
-            {loginWay === "email" && (
+            {/* {loginWay === "email" && (
               <Button
                 onClick={(e) => {
                   e.preventDefault();
@@ -136,7 +136,7 @@ function SignIn() {
               >
                 Send
               </Button>
-            )}
+            )} */}
             {loginWay === "password" ? (
               <TextField
                 margin="normal"
@@ -164,7 +164,7 @@ function SignIn() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
-              <Grid item>
+              {/* <Grid item>
                 {loginWay === "password" ? (
                   <Typography onClick={() => setLoginWay("email")}>
                     <Link className="cursor-pointer" variant="body2">
@@ -178,7 +178,7 @@ function SignIn() {
                     </Link>
                   </Typography>
                 )}
-              </Grid>
+              </Grid> */}
             </Grid>
             <Button
               type="submit"
