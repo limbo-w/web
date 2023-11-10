@@ -4,7 +4,14 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import DealsItem from "../DealItem";
 import Image from "next/image";
-import { Container, List, ListItem, Pagination, Stack } from "@mui/material";
+import {
+  Container,
+  List,
+  ListItem,
+  Pagination,
+  PaginationItem,
+  Stack,
+} from "@mui/material";
 import { useRouter } from "next/router";
 import HotSvg from "../../public/hot.svg";
 import ClothingSvg from "../../public/clothing.svg";
@@ -19,7 +26,6 @@ import HandleBag from "../../public/handbag.svg";
 import Swiper from "../Swiper";
 import classnames from "classnames";
 import { fetchCategories } from "../../server/api/deals";
-
 
 const swiperList = [
   {
@@ -139,7 +145,7 @@ interface ITrendingProps {
   deals: any[];
   swiperList: any[];
   totalPages: any;
-  categories:any[];
+  categories: any[];
 }
 
 export default function Trending(props: ITrendingProps) {
@@ -199,7 +205,7 @@ export default function Trending(props: ITrendingProps) {
                 }}
               >
                 {/* <svg xmlns={currentCategory.icon}></svg> */}
-                 {/* <img className={classnames( "category-icon",{
+                {/* <img className={classnames( "category-icon",{
                   "category-icon-blue": category === currentCategory.id,
                  })}  src={currentCategory.icon}></img> */}
                 <Typography
@@ -218,8 +224,6 @@ export default function Trending(props: ITrendingProps) {
               </ListItem>
             );
           })}
-          
-           
         </List>
       </Container>
       <Swiper
@@ -263,9 +267,45 @@ export default function Trending(props: ITrendingProps) {
           count={props.totalPages}
           color="primary"
           size="large"
+          renderItem={(item) => (
+            <PaginationItem
+              components={{
+                // last: (props) => <button {...props}>Last</button>,
+                next: (props) => (
+                  <button  {...props} className="flex justify-center items-center">
+                      <div  className="text-[16px]">Next</div>
+                    <svg
+                      className="MuiSvgIcon-root w-8 h-8  "
+                      focusable="false"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      data-testid="NavigateNextIcon"
+                    >
+                      <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"></path>
+                    </svg>
+                  </button>
+                ),
+                // first: (props) => <button {...props}>First</button>,
+                previous: (props) => (
+                  <button  {...props} className="flex justify-center items-center">
+                    <svg
+                      className="MuiSvgIcon-root w-8 h-8  "
+                      focusable="false"
+                      aria-hidden="true"
+                      viewBox="0 0 24 24"
+                      data-testid="NavigateBeforeIcon"
+                    >
+                      <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"></path>
+                    </svg>
+                      <div className="text-[16px]">Previous</div>
+                  </button>
+                ),
+              }}
+              {...item}
+            />
+          )}
         />
       </Stack>
     </Box>
   );
 }
-

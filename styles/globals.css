@@ -131,4 +131,7 @@ u{
   color: #1E6DBB;
 }
 
-
+/* 
+.MuiPagination-ul:first-child{
+  content: "previous";
+} */
