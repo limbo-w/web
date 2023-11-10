@@ -51,24 +51,29 @@ function SignUp() {
           message.success({ content: "sign in success!" });
         }
       }else{
-        result = await signUpByPassword({
-          username: data.get("username"),
-          password: data.get("password"),
-          plainPassword: data.get("plainPassword"),
-          nickname:data.get("nickname")
-        });
-        if(result?.actived){
-          message.success({ content: "sign in success!" });
+        try {
+          result = await signUpByPassword({
+            username: data.get("username"),
+            password: data.get("password"),
+            plainPassword: data.get("plainPassword"),
+            nickname:data.get("nickname")
+          });
+          if(result?.actived){
+            message.success({ content: "sign in success!" });
+          }
+        } catch (error) {
+          console.log(error)
+          message.error({content: error.response?.data?.message[0]})
         }
       }
-      if (result?.actived) {
-        // localStorage.setItem("token", result.data.token);
-        // commonStore.setUserProfile(result.data.user);
-        router.push("/sign_in");
-        message.success({ content: "sign in success!" });
-      } else {
-        message.error({ content: result.message });
-      }
+      // if (result?.actived) {
+      //   // localStorage.setItem("token", result.data.token);
+      //   // commonStore.setUserProfile(result.data.user);
+      //   router.push("/sign_in");
+      //   message.success({ content: "sign in success!" });
+      // } else {
+      //   message.error({ content: result.message });
+      // }
   };
 
   return (
@@ -102,13 +107,13 @@ function SignUp() {
                     required
                     fullWidth
                     id="username"
-                    label="username"
+                    label="Username"
                     name="username"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
-                    autoComplete="username"
+                    autoComplete="Username"
                   />
                 </Grid>
                 {/* <Grid item xs={12}>
@@ -119,10 +124,10 @@ function SignUp() {
                     required
                     fullWidth
                     name="nickname"
-                    label="nickname"
+                    label="Nickname"
                     type="text"
                     id="nickname"
-                    autoComplete="nickname"
+                    autoComplete="Nickname"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -130,10 +135,10 @@ function SignUp() {
                     required
                     fullWidth
                     name="password"
-                    label="password"
+                    label="Password"
                     type="password"
                     id="password"
-                    autoComplete="password"
+                    autoComplete="Password"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -141,10 +146,10 @@ function SignUp() {
                     required
                     fullWidth
                     name="plainPassword"
-                    label="plainPassword"
+                    label="Confirm Password                    "
                     type="password"
                     id="plainPassword"
-                    autoComplete="plainPassword"
+                    autoComplete="Confirm Password                    "
                   />
                 </Grid>
                 {/* <Grid item xs={12}>
@@ -174,7 +179,7 @@ function SignUp() {
               </Grid>
             </Box>
         </Box>
-        <Divider
+        {/* <Divider
           sx={{
             mb: 4,
           }}
@@ -189,7 +194,7 @@ function SignUp() {
           startIcon={<GoogleSvg width={20} height={20} />}
         >
           Sign in with Google
-        </Button>
+        </Button> */}
       </Container>
     </Layout>
   );

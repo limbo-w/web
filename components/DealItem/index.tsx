@@ -56,16 +56,17 @@ function DealsItem(props) {
           router.push({
             pathname:"/deals/1",
             query:{
-              image:post.image?.id + post.image?.ext,
-              title:post?.title,
-              price:post?.price,
-              oldPrice:post?.oldPrice,
-              description:post?.description,
-              endedAt:post?.endedAt,
-              categoryName:post?.categories?.[0].name,
-              categoryID:post?.categories?.[0]?.id,
-              link:post?.link,
-              brandIMG:post?.brand?.logo?.id + post.brand?.logo?.ext,
+              image:post.image?.id + post.image.ext,
+              title:post.title,
+              price:post.price,
+              oldPrice:post.oldPrice,
+              description:post.description,
+              endedAt:post.endedAt,
+              categoryName:post.categories?.[0].name,
+              categoryID:post.categories?.[0].id,
+              link:post.link,
+              brandIMG:post.brand?.logo?.id + post.brand?.logo?.ext,
+              isExpired:post.isExpired,
             }
           });
         }}

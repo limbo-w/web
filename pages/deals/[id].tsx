@@ -497,6 +497,7 @@ export async function getServerSideProps(context) {
     categoryID: context.query.categoryID,
     link: context.query.link,
     brandIMG: context.query.brandIMG,
+    isExpired: context.query.isExpired != 'false',
   };
   const deals = await fetchDeals({
     categories: context.query.categoryID,

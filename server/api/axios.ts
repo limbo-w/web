@@ -27,6 +27,7 @@ commonRequest.interceptors.response.use(function (response) {
 }, function (error) {
   if ('document' in global) {
     // message.error({content: error?.response?.data?.message[0]})
+
   }
   return Promise.reject(error);
 });

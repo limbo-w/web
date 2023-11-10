@@ -15,7 +15,7 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Layout from "../components/Layout";
 import { useRouter } from "next/router";
-import { login,loginByEmail,sendLoginEmail } from "../server/api/user";
+import { login, loginByEmail, sendLoginEmail } from "../server/api/user";
 import stores from "../stores";
 import message from "../components/Message";
 import GoogleSvg from "../public/google.svg";
@@ -24,15 +24,15 @@ function SignIn() {
   const router = useRouter();
   const { commonStore } = stores;
   const [email, setEmail] = React.useState("");
-  const sendCode = async ()=>{
-    try{
+  const sendCode = async () => {
+    try {
       const res = await sendLoginEmail({
-        email:email
+        email: email
       })
-      if(res.email){
+      if (res.email) {
         message.success({ content: "send email success!" });
       }
-    }catch(e){
+    } catch (e) {
       console.error(e, "e?.message");
       message.error({ content: e.response.data.message });
     }
@@ -42,9 +42,9 @@ function SignIn() {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     try {
-      if(loginWay === 'password'){
+      if (loginWay === 'password') {
         const { token } = await login({
-          credential: data.get("email"),
+          credential: data.get("username"),
           password: data.get("password"),
         });
         if (token) {
@@ -55,7 +55,7 @@ function SignIn() {
         } else {
           message.error({ content: "login error" });
         }
-      }else{
+      } else {
         const { token } = await loginByEmail({
           email: data.get("email"),
           code: data.get("code"),
@@ -69,7 +69,7 @@ function SignIn() {
           message.error({ content: "login error" });
         }
       }
-      
+
     } catch (e) {
       console.error(e?.message);
       if (e?.name !== "AxiosError") {
@@ -116,14 +116,14 @@ function SignIn() {
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              id="email"
-              type="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              // type="email"
+              label="username"
+              name="username"
+              // autoComplete="email"
               autoFocus
             />
-            {loginWay === "email" && (
+            {/* {loginWay === "email" && (
               <Button
                 onClick={(e) => {
                   e.preventDefault();
@@ -136,7 +136,7 @@ function SignIn() {
               >
                 Send
               </Button>
-            )}
+            )} */}
             {loginWay === "password" ? (
               <TextField
                 margin="normal"
@@ -164,7 +164,7 @@ function SignIn() {
                 control={<Checkbox value="remember" color="primary" />}
                 label="Remember me"
               />
-              <Grid item>
+              {/* <Grid item>
                 {loginWay === "password" ? (
                   <Typography onClick={() => setLoginWay("email")}>
                     <Link className="cursor-pointer" variant="body2">
@@ -178,7 +178,7 @@ function SignIn() {
                     </Link>
                   </Typography>
                 )}
-              </Grid>
+              </Grid> */}
             </Grid>
             <Button
               type="submit"
@@ -215,7 +215,7 @@ function SignIn() {
             </Grid>
           </Box>
         </Box>
-        <Divider
+        {/* <Divider
           sx={{
             mb: 4,
           }}
@@ -230,7 +230,7 @@ function SignIn() {
           startIcon={<GoogleSvg width={20} height={20} />}
         >
           Sign in with Google
-        </Button>
+        </Button> */}
       </Container>
     </Layout>
   );
