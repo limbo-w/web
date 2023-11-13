@@ -20,7 +20,7 @@ import stores from "../stores";
 
 function SignUp() {
   const [email, setEmail] = React.useState("");
-  const [way,setWay] = React.useState("password");
+  const [way,setWay] = React.useState("email");
   const router = useRouter();
   const { commonStore } = stores;
   const sendCode = async (event) => {
@@ -46,6 +46,8 @@ function SignUp() {
         result = await signUp({
           email: data.get("email"),
           code: data.get("code"),
+          username: data.get("username"),
+          password: data.get("password"),
         });
         if(result?.actived){
           message.success({ content: "sign in success!" });
@@ -106,28 +108,43 @@ function SignUp() {
                   <TextField
                     required
                     fullWidth
-                    id="username"
-                    label="Username"
-                    name="username"
+                    id="email"
+                    label="Email Address"
+                    name="email"
                     value={email}
                     onChange={(e) => {
                       setEmail(e.target.value);
                     }}
-                    autoComplete="Username"
+                    autoComplete="email"
                   />
+                  <Button
+                    fullWidth
+                    variant="contained"
+                    className=" btn w-36 btn-primary bg-blue-500  border-4 border-blue-500"
+                    onClick={sendCode}
+                  >
+                    Get Code
+                  </Button>
                 </Grid>
-                {/* <Grid item xs={12}>
-            
-            </Grid> */}
                 <Grid item xs={12}>
                   <TextField
                     required
                     fullWidth
-                    name="nickname"
-                    label="Nickname"
+                    name="code"
+                    label="code"
                     type="text"
-                    id="nickname"
-                    autoComplete="Nickname"
+                    id="code"
+                    autoComplete="new-code"
+                  />
+                </Grid>
+                <Grid item xs={12} className="flex space-x-2 items-center">
+                  <TextField
+                    required
+                    fullWidth
+                    id="username"
+                    label="Username"
+                    name="username"
+                    autoComplete="Username"
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -139,17 +156,6 @@ function SignUp() {
                     type="password"
                     id="password"
                     autoComplete="Password"
-                  />
-                </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    required
-                    fullWidth
-                    name="plainPassword"
-                    label="Confirm Password                    "
-                    type="password"
-                    id="plainPassword"
-                    autoComplete="Confirm Password                    "
                   />
                 </Grid>
                 {/* <Grid item xs={12}>
