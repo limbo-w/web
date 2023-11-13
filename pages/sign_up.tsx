@@ -43,14 +43,19 @@ function SignUp() {
     let result;
     const data = new FormData(event.currentTarget);
       if(way === "email"){
-        result = await signUp({
-          email: data.get("email"),
-          code: data.get("code"),
-          username: data.get("username"),
-          password: data.get("password"),
-        });
-        if(result?.actived){
-          message.success({ content: "sign in success!" });
+        try{
+          result = await signUp({
+            email: data.get("email"),
+            code: data.get("code"),
+            username: data.get("username"),
+            password: data.get("password"),
+          });
+          if(result?.actived){
+            message.success({ content: "sign in success!" });
+          }
+        } catch (error) {
+          console.log(error)
+          message.error({content: error.response?.data?.message[0]})
         }
       }else{
         try {
