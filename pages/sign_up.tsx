@@ -55,7 +55,7 @@ function SignUp() {
           }
         } catch (error) {
           console.log(error)
-          message.error({content: error.response?.data?.message[0]})
+          message.error({content: Array.isArray(error.response?.data?.message) ? error.response?.data?.message[0] : error.response?.data?.message})
         }
       }else{
         try {
