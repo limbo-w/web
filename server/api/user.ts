@@ -18,10 +18,12 @@ export async function getGoogleToken(props) {
 }
 
 
-export async function signUp({ email, code }) {
+export async function signUp({ email, code, username, password }) {
   const response = await commonRequest.post("/auth/email-register", {
     email,
     code,
+    username,
+    password
   },{
     headers:{
       "Content-Type":"application/json",
