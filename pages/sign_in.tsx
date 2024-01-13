@@ -118,7 +118,7 @@ function SignIn() {
               }}
               id="username"
               // type="email"
-              label="username"
+              label="email"
               name="username"
               // autoComplete="email"
               autoFocus
