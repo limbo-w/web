@@ -46,6 +46,8 @@ function SignIn() {
         const { token } = await login({
           credential: data.get("username"),
           password: data.get("password"),
+        }).catch((err)=>{
+          message.error({ content: "login error,please check your password or email" });
         });
         if (token) {
           localStorage.setItem("token", token);
